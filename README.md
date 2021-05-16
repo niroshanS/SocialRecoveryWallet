@@ -4,6 +4,8 @@
 An attempt at a social recovery wallet. This is still very much a WIP
 
 ## How to run
+Follow these instructions to ensure your dev environment is setup properly: https://reactnative.dev/docs/environment-setup
+
 Check out the project and run
 
  `npm install`
