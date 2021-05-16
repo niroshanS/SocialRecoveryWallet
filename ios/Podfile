@@ -1,0 +1,59 @@
+source 'https://cdn.cocoapods.org/'
+platform :ios, '11.0'
+project 'SocialRecoveryWallet'
+
+#
+# delegate linking native modules to the RN CLI
+# with this, you do not need to specify a podspec below for supported third-party RN libs
+#
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+
+def node_path(path)
+  File.join('../node_modules', path)
+end
+
+target 'SocialRecoveryWallet' do
+  config = use_native_modules!
+  use_react_native!(:path => config["reactNativePath"])
+
+  # pod 'SAMKeychain', '1.5.2'
+  # pod 'Fabric'rm 
+  # pod 'Answers'
+  # pod 'GoogleIDFASupport', '3.14.0'
+  # pod 'Plaid', '1.1.29'
+  # pod 'MarketingCloudSDK', '~> 6.3'
+  # pod 'TrustKit'
+  # pod 'MobilePlatformEngine', :path => node_path('@wealthsimple/mobile-platform-engine/ios')
+  # pod 'WsReactNativeAnalytics', :path => node_path('@wealthsimple/mobile-platform-rn-analytics/ios')
+  # pod 'WsReactNativeReviewPrompts', :path => node_path('@wealthsimple/mobile-platform-rn-review-prompts/ios')
+  # pod 'CodePush', :path => node_path('react-native-code-push'), :modular_headers => true
+  
+  # target 'TradeTests' do
+  #   inherit! :search_paths
+  # end
+
+  post_install do |installer|
+    installer.pods_project.main_group.tab_width = '2';
+    installer.pods_project.main_group.indent_width = '2';
+
+    installer.target_installation_results.each do |targetInstallationResult|
+      targetName = targetInstallationResult[0]
+      target = targetInstallationResult[1];
+
+      if targetName == 'ExpoKit'
+        target.native_target.build_configurations.each do |config|
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'EX_DETACHED=1'
+        end
+      end
+
+      if ['Amplitude-iOS','Analytics','AppAuth','Branch','CocoaLumberjack','FBSDKCoreKit','FBSDKLoginKit','FBSDKShareKit','GPUImage','JKBigInteger2'].include? targetName
+        target.native_target.build_configurations.each do |config|
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+        end
+      end
+
+    end
+  end
+end
