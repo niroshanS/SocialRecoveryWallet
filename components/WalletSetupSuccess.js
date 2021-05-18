@@ -3,9 +3,10 @@ import {
   StyleSheet,
   View,
   Text,
+  Button,
 } from 'react-native';
 
-export const WalletDetails = ({ wallet }) => {
+export const WalletSetupSuccess = ({ wallet, navigation }) => {
   return (
     <View>
       <View style={styles.sectionContainer}>
@@ -14,13 +15,21 @@ export const WalletDetails = ({ wallet }) => {
       </View>
 
       <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Your Balance</Text>
-        <Text style={styles.sectionDescription}>100 ETH</Text>
+        <Text style={styles.sectionTitle}>Your Secret Phrase</Text>
+        <Text style={styles.sectionDescription}>Please save a copy of this as this will allow you to recover your wallet. This is a secret phrase that you should never share 🤫</Text>
+        <Text style={styles.sectionDescription}>{wallet._mnemonic().phrase}</Text>
       </View>
 
+      <View style={styles.sectionContainer}></View>
+      <Button
+        title="Home"
+        onPress={() =>
+          navigation.push('Welcome')
+        }
+      />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   sectionTitle: {
@@ -39,3 +48,4 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
+

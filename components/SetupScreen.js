@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { ethers, providers } from 'ethers';
 import * as Keychain from 'react-native-keychain';
-import { WalletDetails } from './WalletDetails';
+import { WalletSetupSuccess } from './WalletSetupSuccess';
 
 
 
@@ -28,5 +28,6 @@ export const SetupScreen = ({ navigation, route }) => {
     }
   });
 
-  return wallet !== null ? <WalletDetails wallet={wallet}/> : <Text>'setting up your wallet'</Text>;
+  return wallet !== null ? <WalletSetupSuccess wallet={wallet} navigation={navigation} /> : 
+  <Text>'setting up your wallet'</Text>;
 };
