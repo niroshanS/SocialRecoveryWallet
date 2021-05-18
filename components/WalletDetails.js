@@ -15,8 +15,8 @@ export const WalletDetails = ({ wallet }) => {
       </View>
 
       <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Your Mnemonic</Text>
-        <Text style={styles.sectionDescription}>Please save a copy of this as this will allow you to recover your wallet.</Text>
+        <Text style={styles.sectionTitle}>Your Secret Phrase</Text>
+        <Text style={styles.sectionDescription}>Please save a copy of this as this will allow you to recover your wallet. This is a secret phrase that you should never share 🤫</Text>
         <Text style={styles.sectionDescription}>{wallet._mnemonic().phrase}</Text>
       </View>
     </View>
