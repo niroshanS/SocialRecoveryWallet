@@ -18,7 +18,6 @@ export const SetupScreen = ({ navigation, route }) => {
   const [wallet, setWallet] = useState(null);
   useEffect(() => {
     if (wallet == null) {
-      console.log("in use effect!!");
       setWallet(ethers.Wallet.createRandom());
       
     } else {
