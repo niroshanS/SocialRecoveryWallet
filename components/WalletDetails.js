@@ -9,19 +9,30 @@ import { ethers, providers } from 'ethers';
 export const WalletDetails = ({ wallet }) => {
   const [balance, setBalance] = useState(0);
 
-  useEffect(() => {
-    (async function getBalance() {
-      if(wallet == null) {
-        return;
-      }
+  async function getBalance() {
+    if(wallet == null) {
+      return;
+    }
 
-      console.log("getting balance!!!");
-      const balance = await wallet.getBalance();
-      console.log("got balance");
-      console.log(balance);
-      console.log("done");
-      setBalance(ethers.utils.formatUnits(balance, 18));
-    })();
+    console.log("getting balance!!!");
+    const balance = await wallet.getBalance();
+    console.log(wallet.address);
+    console.log("got balance");
+    console.log(balance);
+    console.log("done");
+    setBalance(ethers.utils.formatUnits(balance, 18));
+  }
+
+  useEffect(() => {
+    console.log("init interval");
+    const interval = setInterval(() => {
+      getBalance();
+    }, 10000);
+    
+    return () => {
+      console.log("clear interval");
+      clearInterval(interval);
+    }
   }, []);
 
   return (
