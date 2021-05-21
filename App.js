@@ -15,6 +15,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from './components/HomeScreen';
 import { SetupScreen } from './components/SetupScreen';
+import { SendScreen } from './components/SendScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,10 @@ const App: () => React$Node = () => {
         <Stack.Screen 
         name = "Setup"
         component = {SetupScreen}
+        />
+        <Stack.Screen 
+        name = "Send"
+        component = {SendScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

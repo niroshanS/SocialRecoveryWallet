@@ -26,6 +26,6 @@ export const HomeScreen = ({ navigation }) => {
     })();
   }, []);
 
-  return wallet == null ? <EmptyHomeScreen navigation={navigation} /> : <WalletDetails wallet={wallet} />
+  return wallet == null ? <EmptyHomeScreen navigation={navigation} /> : <WalletDetails wallet={wallet} navigation={navigation} />
 
 };

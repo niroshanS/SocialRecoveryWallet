@@ -3,10 +3,11 @@ import {
   StyleSheet,
   View,
   Text,
+  Button,
 } from 'react-native';
 import { ethers, providers } from 'ethers';
 
-export const WalletDetails = ({ wallet }) => {
+export const WalletDetails = ({ wallet, navigation }) => {
   const [balance, setBalance] = useState(0);
 
   async function getBalance() {
@@ -24,13 +25,12 @@ export const WalletDetails = ({ wallet }) => {
   }
 
   useEffect(() => {
-    console.log("init interval");
+    
     const interval = setInterval(() => {
       getBalance();
     }, 10000);
     
     return () => {
-      console.log("clear interval");
       clearInterval(interval);
     }
   }, []);
@@ -45,6 +45,15 @@ export const WalletDetails = ({ wallet }) => {
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionTitle}>Your Balance</Text>
         <Text style={styles.sectionDescription}>{balance} ETH</Text>
+      </View>
+
+      <View style={styles.sectionContainer}>
+        <Button
+        title="Send"
+        onPress={() =>
+          navigation.navigate('Send')
+        }
+      />
       </View>
 
     </View>
