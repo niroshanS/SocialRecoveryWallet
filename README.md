@@ -22,7 +22,7 @@ Then in the original terminal run
 Currently this has basic wallet functionality. This will change in the future to actually be a social recovery wallet implemented on a L2.
 
 ## Setup
-![](./demo/setup.gif)
+<img src="./demo/setup.gif" width="40%" height="40%"/>
 
 
 ## Basic Functionality
