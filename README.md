@@ -18,7 +18,15 @@ Then in the original terminal run
 
 `npx react-native run-ios` or `npx react-native run-android` (I haven't actually tried it with Android yet 😅)
 
+# Current status
+Currently this has basic wallet functionality. This will change in the future to actually be a social recovery wallet implemented on a L2.
 
+## Setup
+![](./demo/setup.gif)
+
+
+## Basic Functionality
+![](./demo/basic-function.gif)
 
 
 
