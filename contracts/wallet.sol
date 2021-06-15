@@ -17,32 +17,41 @@ interface Erc20 {
 
 contract Wallet {
     address _owner;
-    address[] _guradians;
-    address[] allowedWithdrawalAddresses;
+    address[] _guardians;
+    address[] _allowedWithdrawalAddresses;
 
     constructor(
         address owner,
         address[] memory guradians
     ) {
         _owner = owner;
-        _guradians = guradians;
-        allowedWithdrawalAddresses.push(_owner);
+        _guardians = guradians;
+        _allowedWithdrawalAddresses.push(_owner);
     }
 
     function addAllowedWithdrawalAddress(address withdrawalAddress) external returns (bool success) {
       require(msg.sender == _owner, "Restricted action!");
-      require(!isAddressAllowed(withdrawalAddress), "Address already allowed");
+      require(!_isAddressAllowed(withdrawalAddress), "Address already allowed");
 
-      allowedWithdrawalAddresses.push(withdrawalAddress);
+      _allowedWithdrawalAddresses.push(withdrawalAddress);
       return true;
     }
 
-    function isAddressAllowed(address withdrawalAddress) private view returns (bool allowed) {
-      for(uint i=0; i<allowedWithdrawalAddresses.length; i++) {
-        if(allowedWithdrawalAddresses[i] == withdrawalAddress) {
+    function getGuardians() external view returns (address[] memory guardians) {
+      return _guardians;
+    }
+
+    function _isAddressAllowed(address withdrawalAddress) private view returns (bool allowed) {
+      for(uint i=0; i<_allowedWithdrawalAddresses.length; i++) {
+        if(_allowedWithdrawalAddresses[i] == withdrawalAddress) {
           return true;
         }
       }
       return false;
     }
+
+    function isAddressAllowed(address withdrawalAddress) external view returns (bool allowed) {
+      return _isAddressAllowed(withdrawalAddress);
+    }
+    
 }
