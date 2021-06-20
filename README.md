@@ -18,6 +18,11 @@ Then in the original terminal run
 
 `npx react-native run-ios` or `npx react-native run-android` (I haven't actually tried it with Android yet 😅)
 
+## How to test
+To test the contract code run:
+
+`yarn truffle test`
+
 # Current status
 Currently this has basic wallet functionality. This will change in the future to actually be a social recovery wallet implemented on a L2.
 
