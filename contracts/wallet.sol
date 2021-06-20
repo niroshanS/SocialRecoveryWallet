@@ -20,38 +20,69 @@ contract Wallet {
     address[] _guardians;
     address[] _allowedWithdrawalAddresses;
 
-    constructor(
-        address owner,
-        address[] memory guradians
-    ) {
+    modifier isOwner() {
+        require(msg.sender == _owner, 'Restricted action!');
+        _;
+    }
+
+    constructor(address owner, address[] memory guradians) {
         _owner = owner;
         _guardians = guradians;
         _allowedWithdrawalAddresses.push(_owner);
     }
 
-    function addAllowedWithdrawalAddress(address withdrawalAddress) external returns (bool success) {
-      require(msg.sender == _owner, "Restricted action!");
-      require(!_isAddressAllowed(withdrawalAddress), "Address already allowed");
+    function addAllowedWithdrawalAddress(address withdrawalAddress)
+        external
+        isOwner()
+        returns (bool success)
+    {
+        require(
+            !_isAddressAllowed(withdrawalAddress),
+            'Address already allowed'
+        );
 
-      _allowedWithdrawalAddresses.push(withdrawalAddress);
-      return true;
+        _allowedWithdrawalAddresses.push(withdrawalAddress);
+        return true;
     }
 
-    function getGuardians() external view returns (address[] memory guardians) {
-      return _guardians;
+    // For security reasons only the owner can see who the guardians are
+    function getGuardians()
+        external
+        view
+        isOwner()
+        returns (address[] memory guardians)
+    {
+        return _guardians;
     }
 
-    function _isAddressAllowed(address withdrawalAddress) private view returns (bool allowed) {
-      for(uint i=0; i<_allowedWithdrawalAddresses.length; i++) {
-        if(_allowedWithdrawalAddresses[i] == withdrawalAddress) {
-          return true;
+    function addGuardian(address newGuardian)
+        external
+        isOwner()
+        returns (bool success)
+    {
+        _guardians.push(newGuardian);
+
+        return true;
+    }
+
+    function isAddressAllowed(address withdrawalAddress)
+        external
+        view
+        returns (bool allowed)
+    {
+        return _isAddressAllowed(withdrawalAddress);
+    }
+
+    function _isAddressAllowed(address withdrawalAddress)
+        private
+        view
+        returns (bool allowed)
+    {
+        for (uint256 i = 0; i < _allowedWithdrawalAddresses.length; i++) {
+            if (_allowedWithdrawalAddresses[i] == withdrawalAddress) {
+                return true;
+            }
         }
-      }
-      return false;
+        return false;
     }
-
-    function isAddressAllowed(address withdrawalAddress) external view returns (bool allowed) {
-      return _isAddressAllowed(withdrawalAddress);
-    }
-    
 }
