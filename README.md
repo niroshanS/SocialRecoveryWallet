@@ -21,7 +21,7 @@ Then in the original terminal run
 ## How to test
 To test the contract code run:
 
-`yarn truffle test`
+`npx truffle test` or `yarn truffle test`
 
 # Current status
 Currently this has basic wallet functionality. This will change in the future to actually be a social recovery wallet implemented on a L2.
