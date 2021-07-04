@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
   Text,
-  StatusBar,
-  Button,
 } from 'react-native';
-import { ethers, providers } from 'ethers';
+import { ethers } from 'ethers';
 import * as Keychain from 'react-native-keychain';
 import { WalletSetupSuccess } from './WalletSetupSuccess';
 

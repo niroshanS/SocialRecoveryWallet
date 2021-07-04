@@ -22,9 +22,9 @@ export const WalletSetupSuccess = ({ wallet, navigation }) => {
 
       <View style={styles.sectionContainer}></View>
       <Button
-        title="Home"
+        title="Deploy Smart Contract"
         onPress={() =>
-          navigation.push('Welcome')
+          navigation.push('Deployment')
         }
       />
     </View>

@@ -16,6 +16,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from './components/HomeScreen';
 import { SetupScreen } from './components/SetupScreen';
 import { SendScreen } from './components/SendScreen';
+import { DeploymentScreen } from './components/DeploymentScreen';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,10 @@ const App: () => React$Node = () => {
         <Stack.Screen 
         name = "Setup"
         component = {SetupScreen}
+        />
+        <Stack.Screen
+        name = "Deployment"
+        component = {DeploymentScreen}
         />
         <Stack.Screen 
         name = "Send"
