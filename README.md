@@ -1,7 +1,7 @@
 # 🚧👷🏽‍♀️Under construction👷🏽‍♀️🚧
 
 # A Mobile Social Recovery Wallet
-An attempt at a social recovery wallet. This is still very much a WIP
+An attempt at a social recovery wallet. This is still very much a WIP and I really don't know what I'm doing right now.
 
 ## How to run
 Follow these instructions to ensure your dev environment is setup properly: https://reactnative.dev/docs/environment-setup
