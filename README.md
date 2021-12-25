@@ -18,6 +18,13 @@ Then in the original terminal run
 
 `npx react-native run-ios` or `npx react-native run-android` (I haven't actually tried it with Android yet 😅)
 
+For ios you'll also need to do
+
+```
+cd ios
+pod install
+```
+
 ## How to test
 To test the contract code run:
 
