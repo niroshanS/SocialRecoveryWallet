@@ -6,6 +6,7 @@ import {
   Button,
 } from 'react-native';
 import { ethers, providers } from 'ethers';
+import WalletCompiledContract from '../build/contracts/Wallet.json';
 
 export const WalletDetails = ({ wallet, navigation }) => {
   const [balance, setBalance] = useState(0);
@@ -22,6 +23,24 @@ export const WalletDetails = ({ wallet, navigation }) => {
     console.log(balance);
     console.log("done");
     setBalance(ethers.utils.formatUnits(balance, 18));
+    // const factory = new ethers.ContractFactory(WalletCompiledContract.abi, WalletCompiledContract.bytecode, wallet);
+    // const contract = await factory.deploy(wallet.address, [wallet.address]);
+
+    // const metadata = JSON.parse(fs.readFileSync('build/contracts/Wallet.json').toString());
+    // console.log(metadata);
+  }
+
+
+  async function deploy() {
+    const provider = wallet.provider;
+    const price = ethers.utils.formatUnits(await provider.getGasPrice(), 'gwei');
+    const options = {gasLimit: 6000000, gasPrice: ethers.utils.parseUnits(price, 'gwei')};
+
+    const factory = new ethers.ContractFactory(WalletCompiledContract.abi, WalletCompiledContract.bytecode, wallet);
+    const contract = await factory.deploy(wallet.address, [wallet.address], options);
+
+    console.log("Contract deployed!!!!");
+    console.log(contract);
   }
 
   useEffect(() => {
@@ -58,9 +77,9 @@ export const WalletDetails = ({ wallet, navigation }) => {
 
       <View style={styles.sectionContainer}>
         <Button
-        title="Add Guardian"
+        title="Deploy Contract"
         onPress={() =>
-          navigation.navigate('Add Guardian')
+          deploy()
         }
       />
       </View>

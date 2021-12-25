@@ -28,6 +28,7 @@ target 'SocialRecoveryWallet' do
   # pod 'WsReactNativeAnalytics', :path => node_path('@wealthsimple/mobile-platform-rn-analytics/ios')
   # pod 'WsReactNativeReviewPrompts', :path => node_path('@wealthsimple/mobile-platform-rn-review-prompts/ios')
   # pod 'CodePush', :path => node_path('react-native-code-push'), :modular_headers => true
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
   
   # target 'TradeTests' do
   #   inherit! :search_paths

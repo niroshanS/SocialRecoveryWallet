@@ -62,6 +62,7 @@ export const SendScreen = ({ navigation }) => {
           value={dest}
           placeholder="Adress to send to"/>
       </View>
+      
 
       <View style={styles.sectionContainer}>
         <Button
