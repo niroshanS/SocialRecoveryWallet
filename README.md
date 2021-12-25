@@ -6,9 +6,18 @@ An attempt at a social recovery wallet. This is still very much a WIP
 ## How to run
 Follow these instructions to ensure your dev environment is setup properly: https://reactnative.dev/docs/environment-setup
 
+This also assumes that you have a local blockchain running such as https://trufflesuite.com/ganache/
+
 Check out the project and run
 
  `npm install`
+
+ For ios you'll also need to do
+
+```
+cd ios
+pod install
+```
 
 Then in a separate terminal navigate to the project dir and run
 
@@ -17,13 +26,6 @@ Then in a separate terminal navigate to the project dir and run
 Then in the original terminal run
 
 `npx react-native run-ios` or `npx react-native run-android` (I haven't actually tried it with Android yet 😅)
-
-For ios you'll also need to do
-
-```
-cd ios
-pod install
-```
 
 ## How to test
 To test the contract code run:
