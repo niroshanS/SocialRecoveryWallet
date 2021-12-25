@@ -17,6 +17,7 @@ import { HomeScreen } from './components/HomeScreen';
 import { SetupScreen } from './components/SetupScreen';
 import { SendScreen } from './components/SendScreen';
 import { DeploymentScreen } from './components/DeploymentScreen';
+import { AddGuardianScreen } from './components/AddGuardianScreen';
 
 const Stack = createStackNavigator();
 
@@ -40,6 +41,10 @@ const App: () => React$Node = () => {
         <Stack.Screen 
         name = "Send"
         component = {SendScreen}
+        />
+        <Stack.Screen 
+        name = "Add Guardian"
+        component = {AddGuardianScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

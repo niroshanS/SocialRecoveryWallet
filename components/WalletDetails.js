@@ -56,6 +56,15 @@ export const WalletDetails = ({ wallet, navigation }) => {
       />
       </View>
 
+      <View style={styles.sectionContainer}>
+        <Button
+        title="Add Guardian"
+        onPress={() =>
+          navigation.navigate('Add Guardian')
+        }
+      />
+      </View>
+
     </View>
   );
 }
