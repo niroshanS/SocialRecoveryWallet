@@ -19,6 +19,8 @@ cd ios
 pod install
 ```
 
+Next compile the wallet contract via `solc contracts/wallet.sol` this should compile the contract to a json file in the `build/contracts` folder. See this doc on how to install solc: https://docs.soliditylang.org/en/v0.8.10/installing-solidity.html
+
 Then in a separate terminal navigate to the project dir and run
 
 `npx react-native start`
